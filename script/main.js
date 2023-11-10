@@ -25,16 +25,17 @@ spotLight.position.set( 0.788, 1.547, 6.26 );
 spotLight.castShadow = true;
 scene.add( spotLight );
 
-//gltf loader
+const model = 'assets/models/scene.gltf'
+
 const loader = new GLTFLoader();
-loader.load( 'assets/models/bot-drafts-5.gltf', function ( gltf ) {
+loader.load( model, function ( gltf ) {
     const model = gltf.scene;
 
-  const scale = 0.07;
-
-  model.scale.set(scale, scale, scale);
-  base.add( gltf.scene );
+    const scale = 0.07;
+    model.scale.set(scale, scale, scale);
+    base.add( model );
 } );
+
 
 
 let base = new THREE.Object3D();
