@@ -25,7 +25,7 @@ spotLight.position.set( 0.788, 1.547, 6.26 );
 spotLight.castShadow = true;
 scene.add( spotLight );
 
-const model = 'assets/models/scene.gltf'
+const model = 'assets/models/bot-drafts.glb'
 
 const loader = new GLTFLoader();
 loader.load( model, function ( gltf ) {
