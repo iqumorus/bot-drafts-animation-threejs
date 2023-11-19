@@ -17,15 +17,13 @@ var canvas = renderer.domElement;
 document.querySelector('#character').appendChild(canvas);
 
 
-const light = new THREE.AmbientLight( 0x222222, 1 ); 
-scene.add( light );
+var light = new THREE.PointLight(0xFFFFFF, 5, 0);
+light.position.set(-0.028, 1.026, 5.532);
+scene.add(light);
 
-const spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 0.788, 1.547, 6.26 );
-spotLight.castShadow = true;
-scene.add( spotLight );
 
-const model = 'assets/models/bot-drafts.glb'
+
+const model = 'assets/models/bot-drafts.gltf'
 
 const loader = new GLTFLoader();
 loader.load( model, function ( gltf ) {
