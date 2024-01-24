@@ -9,3 +9,7 @@ canvas {
     height: 100%;
     display: block;
   }
+
+  .videoClass{
+    opacity: 0;
+  }
