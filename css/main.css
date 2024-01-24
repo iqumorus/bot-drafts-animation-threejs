@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+body {
+  cursor: url("/bot-drafts-animation-threejs/assets/cursore.svg"), auto;
+}
+
 .bg{
   background-image: url("/bot-drafts-animation-threejs/assets/BG.png");
 }
