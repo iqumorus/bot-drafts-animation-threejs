@@ -51,8 +51,8 @@ var pointOfIntersection = new THREE.Vector3();
 window.addEventListener("mousemove", onMouseMove, false);
 
 function onMouseMove(event){
-  mouse.x = ( event.clientX / window.innerWidth ) * 11 - 6;
-  mouse.y = - ( event.clientY / window.innerHeight ) * 11 + 6;
+  mouse.x = ( event.clientX / window.innerWidth ) * 12 - 6;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 12 + 6;
   raycaster.setFromCamera(mouse, camera);
   raycaster.ray.intersectPlane(plane, pointOfIntersection);
   base.lookAt(pointOfIntersection);
