@@ -35,11 +35,11 @@ var light1 = new THREE.PointLight(0xFFFFFF, 1, 0);
 light1.position.set(0, 0, 10);
 scene.add(light1);
 
-var light2 = new THREE.PointLight(0xFFFFFF, 1, 0);
+var light2 = new THREE.PointLight(0xFFFFFF, 0,5, 0);
 light2.position.set(0, 0, 2.677);
 scene.add(light2);
 
-const modelPath = 'assets/models/untitled (2).glb';
+const modelPath = 'assets/models/scene (11).gltf';
 
 const loader = new GLTFLoader();
 

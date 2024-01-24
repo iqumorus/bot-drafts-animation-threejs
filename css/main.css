@@ -3,13 +3,42 @@
     padding: 0px;
 }
 
+.bg{
+  background-image: url("/bot-drafts-animation-threejs/assets/BG.png");
+}
+
+.img1{
+  margin-top: 20px;
+}
+
+.img2{
+  margin-top: 62px;
+}
+
+.img3{
+  margin-top: 350px;
+}
+
+.img4{
+  margin-top: 30px;
+}
 
 canvas {
     width: 100%;
     height: 100%;
     display: block;
   }
+.canvasDiv{
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  position: absolute;
+}
 
   .videoClass{
     opacity: 0;
+    /* z-index: 9999; */
+    width: 1px;
+    height: 1px;
+    position: absolute;
   }
