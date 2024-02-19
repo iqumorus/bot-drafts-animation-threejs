@@ -9,7 +9,10 @@ canvas {
     display: block;
     position: absolute;
   }
+
 .canvasDiv{
+  display: flex;
+  align-items: center;
   height: 100%;
   width: 100%;
   margin-top: 90px;
@@ -21,4 +24,17 @@ canvas {
     width: 1px;
     height: 1px;
     position: absolute;
+  }
+
+  #loadingOverlay{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .placeholder{
+    width: 30%;
   }

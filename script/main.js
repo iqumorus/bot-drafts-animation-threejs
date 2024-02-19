@@ -23,27 +23,33 @@ var light2 = new THREE.PointLight(0xFFFFFF, 1, 0);
 light2.position.set(-10, 0, 2, 0);
 scene.add(light2);
 
-var light1 = new THREE.PointLight(0xFFFFFF, 1, 0);
-light1.position.set(0, 10, 0);
-scene.add(light1);
+var light3 = new THREE.PointLight(0xFFFFFF, 1, 0);
+light3.position.set(0, 10, 0);
+scene.add(light3);
 
-var light2 = new THREE.PointLight(0xFFFFFF, 1, 0);
-light2.position.set(0, -10, 0);
-scene.add(light2);
+var light4 = new THREE.PointLight(0xFFFFFF, 1, 0);
+light4.position.set(0, -10, 0);
+scene.add(light4);
 
-var light1 = new THREE.PointLight(0xFFFFFF, 1, 0);
-light1.position.set(0, 0, 10);
-scene.add(light1);
+var light5 = new THREE.PointLight(0xFFFFFF, 1, 0);
+light5.position.set(0, 0, 10);
+scene.add(light5);
 
-var light2 = new THREE.PointLight(0xFFFFFF, 0,5, 0);
-light2.position.set(0, 0, 2.677);
-scene.add(light2);
+var light6 = new THREE.PointLight(0xFFFFFF, 0,5, 0);
+light6.position.set(0, 0, 2.677);
+scene.add(light6);
 
 const modelPath = 'assets/models/bot-drafts.gltf';
+
+const loadingOverlay = document.getElementById('loadingOverlay');
+loadingOverlay.style.display = 'block';
 
 const loader = new GLTFLoader();
 
 loader.load(modelPath, function (gltf) {
+
+  loadingOverlay.style.display = 'none';
+
   const model = gltf.scene;
 
   const scale = 0.07;
@@ -54,7 +60,6 @@ loader.load(modelPath, function (gltf) {
   
   cubeObject.geometry.attributes.uv.array.forEach((uv, index) => {
     cubeObject.geometry.attributes.uv.array[index] = 1 - uv;
-
   });
 
   const video = document.getElementById('video');
@@ -72,9 +77,6 @@ loader.load(modelPath, function (gltf) {
   cubeObject.material = material;
   base.add(model);
 });
-
-
-
 
 let base = new THREE.Object3D();
 scene.add(base);
