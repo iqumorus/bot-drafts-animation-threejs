@@ -41,14 +41,9 @@ scene.add(light6);
 
 const modelPath = 'assets/models/bot-drafts.gltf';
 
-const loadingOverlay = document.getElementById('loadingOverlay');
-loadingOverlay.style.display = 'block';
-
 const loader = new GLTFLoader();
 
 loader.load(modelPath, function (gltf) {
-
-  loadingOverlay.style.display = 'none';
 
   const model = gltf.scene;
 
