@@ -39,7 +39,8 @@ var light6 = new THREE.PointLight(0xFFFFFF, 0,5, 0);
 light6.position.set(0, 0, 2.677);
 scene.add(light6);
 
-const modelPath = 'assets/models/bot-drafts.gltf';
+// const modelPath = 'assets/models/bot-drafts.gltf';
+const modelPath = 'https://igor-kay.github.io/bot-drafts-animation-threejs/assets/models/bot-drafts.gltf'
 
 const loader = new GLTFLoader();
 
