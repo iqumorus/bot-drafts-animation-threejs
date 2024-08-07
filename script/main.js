@@ -7,7 +7,7 @@ var renderer = new THREE.WebGLRenderer({
   alpha: true
 });
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setPixelRatio(window.devicePixelRatio || 2);
+// renderer.setPixelRatio(window.devicePixelRatio || 2);
 
 var camera = new THREE.PerspectiveCamera(10, 1, 1, 1000);
 camera.position.set(0, 0, 3.2);
@@ -43,35 +43,48 @@ const modelPath = 'assets/models/bot-drafts.gltf';
 
 const loader = new GLTFLoader();
 
-loader.load(modelPath, function (gltf) {
-
-  const model = gltf.scene;
-
-  const scale = 0.07;
-  model.scale.set(scale, scale, scale);
-
-  const cubeObject = model.getObjectByName('Cube001_1', true);
-
-  
-  cubeObject.geometry.attributes.uv.array.forEach((uv, index) => {
-    cubeObject.geometry.attributes.uv.array[index] = 1 - uv;
+function loadModel(path) {
+  return new Promise((resolve, reject) => {
+    loader.load(path, resolve, undefined, reject);
   });
+}
 
-  const video = document.getElementById('video');
+async function init() {
+  try {
+    const gltf = await loadModel(modelPath);
 
-  const videoTexture = new THREE.VideoTexture(video);
-  videoTexture.minFilter = THREE.LinearFilter;
-  videoTexture.magFilter = THREE.LinearFilter;
-  videoTexture.format = THREE.RGBFormat;
+    const model = gltf.scene;
 
-  const material = new THREE.MeshBasicMaterial({
-    map: videoTexture,
-    alphaTest: 0.5,
-  });
+    const scale = 0.07;
+    model.scale.set(scale, scale, scale);
 
-  cubeObject.material = material;
-  base.add(model);
-});
+    const cubeObject = model.getObjectByName('Cube001_1', true);
+
+    if (cubeObject && cubeObject.geometry && cubeObject.geometry.attributes.uv) {
+      cubeObject.geometry.attributes.uv.array.forEach((uv, index) => {
+        cubeObject.geometry.attributes.uv.array[index] = 1 - uv;
+      });
+
+      const video = document.getElementById('video');
+
+      const videoTexture = new THREE.VideoTexture(video);
+      videoTexture.minFilter = THREE.LinearFilter;
+      videoTexture.magFilter = THREE.LinearFilter;
+      videoTexture.format = THREE.RGBFormat;
+
+      const material = new THREE.MeshBasicMaterial({
+        map: videoTexture,
+        alphaTest: 0.5,
+      });
+
+      cubeObject.material = material;
+    }
+
+    base.add(model);
+  } catch (error) {
+    console.error('An error occurred while loading the model', error);
+  }
+}
 
 let base = new THREE.Object3D();
 scene.add(base);
@@ -108,3 +121,5 @@ function resize(renderer) {
   }
   return needResize;
 }
+
+init();
